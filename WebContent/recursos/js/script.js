@@ -73,7 +73,7 @@ function eliminar(id) {
 		if (result) {
 			bootbox.alert("Registro Eliminado Correctamente!", function() {
 				$.get("hc", {id : id,opc : 5}, function(data) {
-					alert("CUalquier cosa")
+					alert("hola");
 					limpiar();
 					listarEscuela(0);
 					listarAlumno();
@@ -87,7 +87,6 @@ function eliminar(id) {
 function modificar(id) {
 	$.post("hc", {id : id,opc : 4}, function(data) {
 		var x = JSON.parse(data);
-		alert("Hola");
 		$("#nmc").val(x[0].apelnombres);
 		$("#cor").val(x[0].correo);
 		$("#tel").val(x[0].telefono);

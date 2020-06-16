@@ -10,17 +10,18 @@ import pe.edu.upeu.registro.util.Conexion;
 
 
 public class Test {
-	private static AlumnoDao pd = new AlumnoDaoImp();
+	private static AlumnoDao alm = new AlumnoDaoImp();
 	private static EscuelaDao esc = new EscuelaDaoImp();
 	private static Gson g = new Gson();
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
 			//conex();
-			listarP();
+			//listarP();
 			//listarC();
+			borrar();
 		}
 	  static void listarP() {
-		  System.out.println(g.toJson(pd.read(17)));
+		  System.out.println(g.toJson(alm.read(17)));
 	  }
 	  static void listarC() {
 		  System.out.println(g.toJson(esc.readAll()));
@@ -32,5 +33,9 @@ public class Test {
 			System.out.println("Desconectado");
 
 		}
+	  }
+	  static void borrar() {
+		  int x= alm.delete(33);
+		  System.out.println(g.toJson(x));
 	  }
 }

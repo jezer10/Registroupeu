@@ -62,7 +62,7 @@ public class AlumnoDaoImp implements AlumnoDao {
 	public int delete(int id) {
 		// TODO Auto-generated method stub
 		int x = 0;
-		String sql = "DELETE FROM alumno WHERE idalumno=?";
+		String sql = "delete from alumno where idalumno=?";
 		try {
 			cx = Conexion.getConexion();
 			ps = cx.prepareStatement(sql);
