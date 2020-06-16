@@ -41,7 +41,7 @@ public class AlumnoDaoImp implements AlumnoDao {
 	public int update(Alumno u) {
 		// TODO Auto-generated method stub
 		int x = 0;
-		String sql = "UPDATE alumno SET idescuela = ?, apelnombres = ?, correo = ?, cantidad = ? WHERE idalumno = ?";
+		String sql = "UPDATE alumno SET idescuela = ?, apelnombres = ?, correo = ?, telefono = ? WHERE idalumno = ?";
 		try {
 			cx = Conexion.getConexion();
 			ps = cx.prepareStatement(sql);
@@ -78,7 +78,7 @@ public class AlumnoDaoImp implements AlumnoDao {
 		// TODO Auto-generated method stub
 		List<Map<String, Object>> list = new ArrayList<>();
 		String sql = "select e.idescuela, e.nombrecat, a.idalumno, a.apelnombres, a.correo, a.telefono "
-				+ "from alumno as a, escuela as e where e.idescuela=a.idescuela and e.idalumno = ?";
+				+ "from alumno as a, escuela as e where e.idescuela=a.idescuela and a.idalumno = ?";
 		try {
 			cx = Conexion.getConexion();
 			ps = cx.prepareStatement(sql);

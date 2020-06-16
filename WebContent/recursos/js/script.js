@@ -1,11 +1,10 @@
 $(document).ready(function(){
-	listarProducto();
+	listarAlumno();
 	listarEscuela(0);
 	limpiar();
 });
 
-$("#boton").click(
-		function() {
+$("#boton").click(function() {
 			var cat = $("#cat").val();
 			var nmc = $("#nmc").val();
 			var cor = $("#cor").val();
@@ -23,14 +22,7 @@ $("#boton").click(
 					if (result) {
 						bootbox.alert("¡Registro Modificado Correctamente!",
 								function() {
-									$.post("hc", {
-										ides : cat,
-										nmc : nmc,
-										cor : cor,
-										tel : tel,
-										idal : id,
-										opc : 6
-									}).done(function(data) {
+									$.post("hc", {idesc : cat,nmc : nmc,cor : cor,tel : tel,idal : id,opc : 6}).done(function(data) {
 										$("#id").val(0);
 										limpiar();
 										listarEscuela(0);
@@ -41,9 +33,9 @@ $("#boton").click(
 						bootbox.alert("El registro no se Modifico!");
 						limpiar();
 						listarEscuela(0);
-						listarProducto();
+						listarAlumno();
 					}
-				})
+				});
 
 			}
 		});
@@ -63,17 +55,14 @@ function listarEscuela(x){
 	});
 }
 
-function listarProducto() {
+function listarAlumno() {
 	var i, c = 1;
 	$.get("hc",{opc : "2"},function(data) {
 		var d = JSON.parse(data);
 		$('#tablita tbody').empty();
 		for (var i = 0; i < d.length; i++) {
 			$("#tablita tbody").append("<tr><td style='color:blue'>"+ c+ 
-					"</td><td>"+ d[i].nombrecat+ "</td><td>"
-					+ d[i].apelnombres+ "</td><td>"
-					+ d[i].correo
-					+ "</td><td>"+ d[i].telefono
+					"</td><td>"+ d[i].nombrecat+ "</td><td>"+ d[i].apelnombres+ "</td><td>"+ d[i].correo + "</td><td>"+ d[i].telefono
 					+ "</td><td><a href='#' style='color:green' onclick='modificar(" + d[i].idalumno + ")'><i class='far fa-edit'></i></a></td><td><a href='#' style='color:red' onclick='eliminar(" + d[i].idalumno + ")'><i class='far fa-trash-alt'></i></a></td></tr>");
 							c++;
 						}
@@ -84,20 +73,22 @@ function eliminar(id) {
 		if (result) {
 			bootbox.alert("Registro Eliminado Correctamente!", function() {
 				$.get("hc", {id : id,opc : 5}, function(data) {
+					alert("CUalquier cosa")
 					limpiar();
 					listarEscuela(0);
-					listarProducto();
-				})
-			})
+					listarAlumno();
+				});
+			});
 		} else {
 			bootbox.alert("El registro no se elimino!");
 		}
-	})
+	});
 }
 function modificar(id) {
-	$post("hc", {id : id,opc : 4}, function(data) {
+	$.post("hc", {id : id,opc : 4}, function(data) {
 		var x = JSON.parse(data);
-		$("#nmc").val(x[0].nombres);
+		alert("Hola");
+		$("#nmc").val(x[0].apelnombres);
 		$("#cor").val(x[0].correo);
 		$("#tel").val(x[0].telefono);
 		$("#id").val(x[0].idalumno);
