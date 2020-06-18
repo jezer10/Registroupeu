@@ -16,12 +16,12 @@ public class Test {
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
 			//conex();
-			//listarP();
+			listarP();
 			//listarC();
-			borrar();
+			//borrar();
 		}
 	  static void listarP() {
-		  System.out.println(g.toJson(alm.read(17)));
+		  System.out.println(g.toJson(alm.read(20)));
 	  }
 	  static void listarC() {
 		  System.out.println(g.toJson(esc.readAll()));

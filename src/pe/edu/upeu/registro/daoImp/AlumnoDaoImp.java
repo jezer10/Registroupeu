@@ -67,6 +67,7 @@ public class AlumnoDaoImp implements AlumnoDao {
 			cx = Conexion.getConexion();
 			ps = cx.prepareStatement(sql);
 			ps.setInt(1, id);
+			x=ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
