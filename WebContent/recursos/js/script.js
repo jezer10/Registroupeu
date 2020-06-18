@@ -27,8 +27,8 @@ $("#boton").click(function() {
 										limpiar();
 										listarEscuela(0);
 										listarAlumno();
-									})
-								})
+									});
+								});
 					} else {
 						bootbox.alert("El registro no se Modifico!");
 						limpiar();
@@ -42,7 +42,7 @@ $("#boton").click(function() {
 
 function listarEscuela(x){
 	var i, c = 1;
-	$("cat").empty().append('<option selected="selected" value="test">Seleccionar Escuela</option>');
+	$("#cat").empty().append('<option selected="selected" value="test">Seleccionar Escuela</option>');
 	$.get("hc", {opc:"1"}, function(data){
 		var d = JSON.parse(data);
 		for (i = 0; i < d.length; i++) {
@@ -66,14 +66,13 @@ function listarAlumno() {
 					+ "</td><td><a href='#' style='color:green' onclick='modificar(" + d[i].idalumno + ")'><i class='far fa-edit'></i></a></td><td><a href='#' style='color:red' onclick='eliminar(" + d[i].idalumno + ")'><i class='far fa-trash-alt'></i></a></td></tr>");
 							c++;
 						}
-					})
+					});
 }
 function eliminar(id) {
 	bootbox.confirm("¿Desea Eliminar?", function(result) {
 		if (result) {
 			bootbox.alert("Registro Eliminado Correctamente!", function() {
 				$.get("hc", {id : id,opc : 5}, function(data) {
-					alert("hola");
 					limpiar();
 					listarEscuela(0);
 					listarAlumno();
@@ -92,7 +91,7 @@ function modificar(id) {
 		$("#tel").val(x[0].telefono);
 		$("#id").val(x[0].idalumno);
 		listarEscuela(x[0].idescuela);
-	})
+	});
 }
 function limpiar(){
 	$("#nmc").val("");

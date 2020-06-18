@@ -63,16 +63,16 @@ public class HomeController extends HttpServlet {
 			out.println(g.toJson("Registro guardado correctamente"));
 			break;
 		case 4:
-			//Buscar Producto Por ID
+			//Buscar Alumno Por ID
 			out.println(g.toJson(alm.read(Integer.parseInt(request.getParameter("id")))));
 			break;
 		case 5:
-			//Eliminar Producto 
+			//Eliminar Alumno 
 			int x = alm.delete(Integer.parseInt(request.getParameter("id")));
 			out.println(g.toJson(x));
 			break;
 		case 6:
-			//Modificar Producto
+			//Modificar Alumno
 			idal = Integer.parseInt(request.getParameter("idal"));
 			ides = Integer.parseInt(request.getParameter("idesc"));
 			nmc = request.getParameter("nmc");
